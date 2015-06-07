@@ -15,6 +15,10 @@ html, body, #container {
   margin-right: auto;
 }
 
+.inner > * {
+  width: 250px;
+  margin: auto;
+}
 
 input[type="submit"] {
   width: 100%
@@ -36,7 +40,7 @@ input[type="submit"] {
 }
 
 .initially-hidden {
-  top: 80%;
+  top: 60%;
   opacity: 0;
   height: 0;
 }
