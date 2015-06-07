@@ -6,6 +6,10 @@ angular.module('roles', [])
 		var socket = new WebSocket('ws://tpkelly.github.io/roles-host/', ['soap']);
 	
 		$scope.submitName = function() {
+		  if ($scope.badgename == null || $scope.badgename.length === 0) {
+		    return;
+	      }
+		
 		  $scope.formClass = 'animate-hidden';
 		  $scope.waitingClass = 'visible';
 		  
