@@ -20,3 +20,18 @@ html, body, #container {
 input[type="submit"] {
   width: 100%
 }
+
+.ng-invalid input[type="submit"] {
+  opacity: 0.5;
+}
+
+.ng-submitted {
+  transform: translateX(-100%);
+  opacity: 0;
+  -webkit-transition: all 1s linear;
+  -moz-transition: all 1s linear;
+  -ms-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  transition: all 1s linear;
+
+}

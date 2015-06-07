@@ -3,21 +3,20 @@
   <head>
     <meta charset='utf-8'>
     <link href="stylesheets/stylesheet.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+	<script src="javascripts/main.js"></script>
     <title>Roles by tpkelly</title>
   </head>
 
-  <body>
+  <body ng-app="roles">
     <div id="container">
-      <div class="inner vertical-centered">
-		<form role="form">
-		<div class="form-group">
-			<label for="badge-name">Enter your Badge name:</label>
-			<input class="form-control" type="text" id="badge-name"></input>
-		</div>
-		<input class="btn btn-primary" type="submit" name="Submit"></input>
+      <div class="inner vertical-centered" id="name">
+		<form role="form" ng-submit="submitName()" ng-controller="SubmitController" autocomplete="off">
+			<div class="form-group">
+				<label for="badge-name">Enter your Badge name:</label>
+				<input class="form-control" type="text" ng-model="badgename" name="badge-name" required></input>
+			</div>
+			<input class="btn btn-primary" type="submit" value="Submit"></input>
 		</form>
 	  </div>
     </div>

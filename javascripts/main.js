@@ -1,1 +1,6 @@
-console.log('This would be the main JS file.');
+angular.module('roles', [])
+	.controller('SubmitController', ['$scope', function($scope) {
+		$scope.submitName = function() {
+		}
+		
+	}]);
