@@ -1,15 +1,12 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
 
 html, body, #container {
-	height: 100%;
+  height: 100%;
 }
 
 .vertical-centered {
   position: relative;
   top: 40%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 .inner {
@@ -31,7 +28,7 @@ input[type="submit"] {
 }
 
 .animate-hidden {
-  transform: translateX(-200%);
+  top: 0%;
   opacity: 0;
   -webkit-transition: all 1s linear;
   -moz-transition: all 1s linear;
@@ -41,12 +38,12 @@ input[type="submit"] {
 }
 
 .initially-hidden {
-  transform: translateX(200%);
+  top: 80%;
   opacity: 0;
 }
 
 .visible {
-  transform: translateX(0%);
+  top: 40%;
   opacity: 1;
   -webkit-transition: all 1s linear;
   -moz-transition: all 1s linear;
