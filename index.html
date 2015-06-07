@@ -12,10 +12,17 @@
   <body ng-app="roles">
     <div id="container" ng-controller="SubmitController">
       <div class="inner vertical-centered" id="name" ng-class="formClass">
-		<form role="form" ng-submit="submitName()" autocomplete="off" autocapitalize="off" novalidate>
+		<form role="form" ng-submit="submitName()" novalidate>
 			<div class="form-group">
 				<label for="badge-name">Enter your Badge name:</label>
-				<input class="form-control" type="text" ng-model="badgename" name="badge-name" required></input>
+				<input class="form-control"
+				       type="text"
+					   ng-model="badgename"
+					   name="badge-name"
+					   required
+					   autocapitalize="words"
+					   autocomplete="off">
+			    </input>
 			</div>
 			<input class="btn btn-primary" type="submit" value="Submit"></input>
 		</form>
