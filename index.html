@@ -9,15 +9,22 @@
   </head>
 
   <body ng-app="roles">
-    <div id="container">
-      <div class="inner vertical-centered" id="name">
-		<form role="form" ng-submit="submitName()" ng-controller="SubmitController" autocomplete="off">
+    <div id="container" ng-controller="SubmitController">
+      <div class="inner vertical-centered" id="name" ng-class="formClass">
+		<form role="form" ng-submit="submitName()" autocomplete="off">
 			<div class="form-group">
 				<label for="badge-name">Enter your Badge name:</label>
 				<input class="form-control" type="text" ng-model="badgename" name="badge-name" required></input>
 			</div>
 			<input class="btn btn-primary" type="submit" value="Submit"></input>
 		</form>
+	  </div>
+	  <div class="inner vertical-centered" id="waiting" ng-class="waitingClass">
+		<div>
+		  <h3>Hi, {{badgename}}</h3>
+		  
+		  Waiting for game to start...
+		</div>
 	  </div>
     </div>
   </body>

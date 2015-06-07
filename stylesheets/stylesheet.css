@@ -6,7 +6,7 @@ html, body, #container {
 
 .vertical-centered {
   position: relative;
-  top: 50%;
+  top: 40%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -14,7 +14,12 @@ html, body, #container {
 
 .inner {
   width: 200px;
-  margin: auto;
+  left: 50%;
+  position: absolute;
+}
+
+.inner > * {
+	transform: translateX(-50%);
 }
 
 input[type="submit"] {
@@ -25,13 +30,27 @@ input[type="submit"] {
   opacity: 0.5;
 }
 
-.ng-submitted {
-  transform: translateX(-100%);
+.animate-hidden {
+  transform: translateX(-200%);
   opacity: 0;
   -webkit-transition: all 1s linear;
   -moz-transition: all 1s linear;
   -ms-transition: all 1s linear;
   -o-transition: all 1s linear;
   transition: all 1s linear;
+}
 
+.initially-hidden {
+  transform: translateX(200%);
+  opacity: 0;
+}
+
+.visible {
+  transform: translateX(0%);
+  opacity: 1;
+  -webkit-transition: all 1s linear;
+  -moz-transition: all 1s linear;
+  -ms-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  transition: all 1s linear;
 }
