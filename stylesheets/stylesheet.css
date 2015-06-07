@@ -10,14 +10,11 @@ html, body, #container {
 }
 
 .inner {
-  width: 200px;
-  left: 50%;
-  position: absolute;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.inner > * {
-	transform: translateX(-50%);
-}
 
 input[type="submit"] {
   width: 100%
@@ -30,6 +27,7 @@ input[type="submit"] {
 .animate-hidden {
   top: 0%;
   opacity: 0;
+  height: 0;
   -webkit-transition: all 1s linear;
   -moz-transition: all 1s linear;
   -ms-transition: all 1s linear;
@@ -40,11 +38,13 @@ input[type="submit"] {
 .initially-hidden {
   top: 80%;
   opacity: 0;
+  height: 0;
 }
 
 .visible {
   top: 40%;
   opacity: 1;
+  height: 80px;
   -webkit-transition: all 1s linear;
   -moz-transition: all 1s linear;
   -ms-transition: all 1s linear;
