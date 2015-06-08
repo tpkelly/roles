@@ -18,6 +18,8 @@ angular.module('roles', [])
 		  $scope.formClass = 'animate-hidden';
 		  $scope.waitingClass = 'visible';
 		  
-		  socket.send($scope.badgename);
+		  
+		  var message = { name: $scope.badgename };
+		  socket.send(JSON.stringify(message));
 		}
 	}]);
