@@ -8,7 +8,7 @@ angular.module('roles', [])
 		
 		socket.onmessage = function(message) {
 		  console.log(message);
-		  var data = JSON.parse(message);
+		  var data = JSON.parse(message.data);
 		  if (data.length && data['role']) {
 		      console.log(data.role);
 		  }
