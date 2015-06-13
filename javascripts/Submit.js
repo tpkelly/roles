@@ -7,7 +7,10 @@ angular.module('roles', [])
 		socket.onopen = function() {};
 		
 		socket.onmessage = function(message) {
-		  console.log(message);
+		  var data = JSON.parse(message);
+		  if (data.length && data['role']) {
+		      console.log(data.role);
+		  }
 		};
 	
 		$scope.submitName = function() {
