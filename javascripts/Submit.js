@@ -8,7 +8,6 @@ angular.module('roles', [])
 		socket.onopen = function() {};
 		
 		socket.onmessage = function(message) {
-		  console.log(message);
 		  var data = JSON.parse(message.data);
 		  if (data.role) {
 		      $scope.role = data.role;
