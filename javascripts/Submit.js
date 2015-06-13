@@ -2,6 +2,7 @@ angular.module('roles', [])
 	.controller('SubmitController', ['$scope', function($scope) {
 	    $scope.formClass = 'visible';
 		$scope.waitingClass = 'initially-hidden';
+		$scope.role = null;
 	
 		var socket = new WebSocket('ws://roles-host.herokuapp.com');
 		socket.onopen = function() {};
@@ -10,7 +11,7 @@ angular.module('roles', [])
 		  console.log(message);
 		  var data = JSON.parse(message.data);
 		  if (data.role) {
-		      console.log(data.role);
+		      $scope.role = data.role;
 		  }
 		};
 	
