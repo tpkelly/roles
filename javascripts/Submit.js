@@ -10,8 +10,8 @@ angular.module('roles', [])
 		socket.onmessage = function(message) {
 		  var data = JSON.parse(message.data);
 		  if (data.role) {
-		      $scope.role = data.role;
-			  $scope.$apply();
+		       setTimeout(function() { $scope.role = data.role; $scope.$apply() }, 5000);
+		       setTimeout(function() { $scope.role = undefined; $scope.$apply() }, 10000);
 		  }
 		};
 	
