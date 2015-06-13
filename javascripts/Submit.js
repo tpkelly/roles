@@ -11,6 +11,7 @@ angular.module('roles', [])
 		  var data = JSON.parse(message.data);
 		  if (data.role) {
 		      $scope.role = data.role;
+			  $scope.$apply();
 		  }
 		};
 	
