@@ -3,6 +3,17 @@ angular.module('roles', [])
 	    $scope.formClass = 'visible';
 		$scope.waitingClass = 'initially-hidden';
 		$scope.role = null;
+		$scope.countdown = null;
+	    var interval;
+	    var countdown = function() {
+			if ($scope.countdown <= -5) {
+			  clearInterval(interval);
+			  $scope.role = null;
+			  return;
+			}
+			$scope.countdown--;
+            $scope.$apply();
+		}
 	
 		var socket = new WebSocket('ws://roles-host.herokuapp.com');
 		socket.onopen = function() {};
@@ -10,8 +21,10 @@ angular.module('roles', [])
 		socket.onmessage = function(message) {
 		  var data = JSON.parse(message.data);
 		  if (data.role) {
-		       setTimeout(function() { $scope.role = data.role; $scope.$apply() }, 5000);
-		       setTimeout(function() { $scope.role = undefined; $scope.$apply() }, 10000);
+		       $scope.countdown = 5;
+			   $scope.role = data.role;
+			   $scope.$apply();
+			   interval = setInterval(countdown, 1000);
 		  }
 		};
 	

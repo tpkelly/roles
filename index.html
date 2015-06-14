@@ -28,17 +28,13 @@
 		</form>
 	  </div>
 	  <div class="inner vertical-centered" id="waiting" ng-class="waitingClass">
-		<div ng-if="role === null">
+		<div>
 		  <h3>Hi, {{badgename}}</h3>
 		  
-		  <p>Waiting for game to start...</p>
-		</div>
-        <div ng-if="role != null ">
-		  <p>You are the...</p>
-		  <h2>{{role}}</h2>
-		</div>
-		<div ng-if="role === undefined">
-			<h3>Thanks for playing!</h3>
+		  <p ng-if="countdown == null">Waiting for game to start...</p>
+		  <p ng-if="countdown > 0">Starting in {{countdown}}</p>
+		  <p ng-if="role != null && countdown <= 0 && countdown > -5">You are the {{role}}</p>
+		  <p ng-if="countdown <= -5">Thanks for playing</p>
 		</div>
 	  </div>
     </div>
