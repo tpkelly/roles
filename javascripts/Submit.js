@@ -40,4 +40,17 @@ angular.module('roles', [])
 		  var message = { name: $scope.badgename, type: 'join' };
 		  socket.send(JSON.stringify(message));
 		}
+    
+    $scope.callMod = function($event) {
+      var message = { type: 'callModerator' };
+      socket.send(JSON.stringify(message));
+      
+      var element = $event.currentTarget;
+      element.disabled = true;
+      element.innerHTML = 'Moderator called';
+      setTimeout(function() {
+        element.disabled = false;
+        element.innerHTML = 'Call Moderator';
+      }, 5000);
+    }
 	}]);

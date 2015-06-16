@@ -12,31 +12,34 @@
   <body ng-app="roles">
     <div id="container" ng-controller="SubmitController">
       <div class="inner vertical-centered" id="name" ng-class="formClass">
-		<form role="form" ng-submit="submitName()" novalidate>
-			<div class="form-group">
-				<label for="badge-name">Enter your Badge name:</label>
-				<input class="form-control"
-				       type="text"
-					   ng-model="badgename"
-					   name="badge-name"
-					   required
-					   autocapitalize="sentences"
-					   autocomplete="off">
-			    </input>
-			</div>
-			<input class="btn btn-primary" type="submit" value="Submit"></input>
-		</form>
-	  </div>
-	  <div class="inner vertical-centered" id="waiting" ng-class="waitingClass">
-		<div>
-		  <h3>Hi, {{badgename}}</h3>
-		  
-		  <p ng-if="countdown == null">Waiting for game to start...</p>
-		  <p ng-if="countdown > 0">Starting in {{countdown}}</p>
-		  <p ng-if="role != null && countdown <= 0 && countdown > -5">You are the {{role}}</p>
-		  <p ng-if="countdown <= -5">Thanks for playing</p>
-		</div>
-	  </div>
+        <form role="form" ng-submit="submitName()" novalidate>
+          <div class="form-group">
+            <label for="badge-name">Enter your Badge name:</label>
+            <input class="form-control"
+                   type="text"
+                 ng-model="badgename"
+                 name="badge-name"
+                 required
+                 autocapitalize="sentences"
+                 autocomplete="off">
+              </input>
+          </div>
+          <input class="btn btn-primary" type="submit" value="Submit"></input>
+        </form>
+        </div>
+        <div class="inner vertical-centered" id="waiting" ng-class="waitingClass">
+          <div>
+            <h3>Hi, {{badgename}}</h3>
+            
+            <p ng-if="countdown == null">Waiting for game to start...</p>
+            <p ng-if="countdown > 0">Starting in {{countdown}}</p>
+            <p ng-if="role != null && countdown <= 0 && countdown > -5">You are the {{role}}</p>
+            <p ng-if="countdown <= -5">Thanks for playing</p>
+          </div>
+        </div>
+        <div class="inner vertical-centered">
+          <button id="call-mod" class="btn btn-danger" ng-click="callMod($event)">Call Moderator</button>
+        </div>
     </div>
   </body>
 </html>
