@@ -37,7 +37,7 @@ angular.module('roles', [])
 		  $scope.waitingClass = 'visible';
 		  
 		  
-		  var message = { name: $scope.badgename };
+		  var message = { name: $scope.badgename, type: 'join' };
 		  socket.send(JSON.stringify(message));
 		}
 	}]);
