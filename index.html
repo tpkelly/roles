@@ -35,10 +35,8 @@
             <p ng-if="countdown > 0">Starting in {{countdown}}</p>
             <p ng-if="role != null && countdown <= 0 && countdown > -5">You are the {{role}}</p>
             <p ng-if="countdown <= -5">Thanks for playing</p>
+            <button id="call-mod" class="btn btn-danger" ng-click="callMod($event)">Call Moderator</button>
           </div>
-        </div>
-        <div class="inner vertical-centered">
-          <button id="call-mod" class="btn btn-danger" ng-click="callMod($event)">Call Moderator</button>
         </div>
     </div>
   </body>

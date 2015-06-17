@@ -58,6 +58,5 @@ input[type="submit"] {
 
 #call-mod {
   margin-top: 20px;
-  margin-left: 35px;
-  margin-right: 35px;
+  width: 100%;
 }
