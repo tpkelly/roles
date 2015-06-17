@@ -4,7 +4,7 @@ angular.module('roles', [])
         $scope.waitingClass = 'initially-hidden';
         $scope.role = null;
         $scope.countdown = null;
-    $scope.moderatorCalled = false;
+        $scope.moderatorCalled = false;
     
         var interval;
         var countdown = function() {
@@ -17,10 +17,25 @@ angular.module('roles', [])
             $scope.$apply();
         }
     
-        var socket = new WebSocket('ws://roles-host.herokuapp.com');
-        socket.onopen = function() {};
+        var socket;
+        var retries = 0;
+        var socketHost = 'ws://roles-host.herokuapp.com';
         
-        socket.onmessage = function(message) {
+        function onopen() {
+          if ($scope.badgename && $scope.badgename.length) {
+            var message = { type: 'join', name: $scope.badgename, signal: $scope.moderatorCalled };
+            socket.send(JSON.stringify(message));
+          }
+        }
+        
+        function onclose() {
+          if (retries < 30) {
+            openSocket();
+            retries++;
+          }
+        }
+        
+        function onmessage (message) {
           if (message.data === 'dismiss') {
             $scope.moderatorCalled = false;
             $scope.$apply();
@@ -49,10 +64,19 @@ angular.module('roles', [])
           socket.send(JSON.stringify(message));
         }
     
-    $scope.callMod = function() {
-      var message = { type: 'callModerator' };
-      socket.send(JSON.stringify(message));
-      
-      $scope.moderatorCalled = true;
-    }
+        $scope.callMod = function() {
+          var message = { type: 'callModerator' };
+          socket.send(JSON.stringify(message));
+          
+          $scope.moderatorCalled = true;
+        }
+        
+        function openSocket() {
+          socket = new WebSocket(socketHost);
+          socket.onopen = onopen;
+          socket.onclose = onclose;
+          socket.onmessage = onmessage;
+        }
+        
+        openSocket();
     }]);
