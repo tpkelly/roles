@@ -35,7 +35,11 @@
             <p ng-if="countdown > 0">Starting in {{countdown}}</p>
             <p ng-if="role != null && countdown <= 0 && countdown > -5">You are the {{role}}</p>
             <p ng-if="countdown <= -5">Thanks for playing</p>
-            <button id="call-mod" class="btn btn-danger" ng-click="callMod($event)">Call Moderator</button>
+            <input type="submit" id="call-mod" class="btn btn-danger"
+              ng-click="callMod()"
+              ng-value="moderatorCalled ? 'Moderator called' : 'Call Moderator'"
+              ng-disabled="moderatorCalled">
+            </input>
           </div>
         </div>
     </div>

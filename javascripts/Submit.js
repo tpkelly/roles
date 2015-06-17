@@ -4,6 +4,8 @@ angular.module('roles', [])
 		$scope.waitingClass = 'initially-hidden';
 		$scope.role = null;
 		$scope.countdown = null;
+    $scope.moderatorCalled = false;
+    
 	    var interval;
 	    var countdown = function() {
 			if ($scope.countdown <= -5) {
@@ -41,16 +43,14 @@ angular.module('roles', [])
 		  socket.send(JSON.stringify(message));
 		}
     
-    $scope.callMod = function($event) {
+    $scope.callMod = function() {
       var message = { type: 'callModerator' };
       socket.send(JSON.stringify(message));
       
-      var element = $event.currentTarget;
-      element.disabled = true;
-      element.innerHTML = 'Moderator called';
+      $scope.moderatorCalled = true;
       setTimeout(function() {
-        element.disabled = false;
-        element.innerHTML = 'Call Moderator';
+        $scope.moderatorCalled = false;
+        $scope.$apply();
       }, 5000);
     }
 	}]);
