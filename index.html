@@ -11,6 +11,12 @@
 
   <body ng-app="roles">
     <div id="container" ng-controller="SubmitController">
+      <div class="inner vertical-centered" id="error" ng-show="error">
+        <h2>Oops...</h2>
+        <br />
+        <p>Could not connect to the server.</p>
+        <p>Please try again</p>
+      </div>
       <div class="inner vertical-centered" id="name" ng-class="formClass">
         <form role="form" ng-submit="submitName()" novalidate>
           <div class="form-group">

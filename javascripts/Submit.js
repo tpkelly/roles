@@ -5,6 +5,7 @@ angular.module('roles', [])
         $scope.role = null;
         $scope.countdown = null;
         $scope.moderatorCalled = false;
+        $scope.error = false;
     
         var interval;
         var countdown = function() {
@@ -28,8 +29,15 @@ angular.module('roles', [])
           }
         }
         
+        function onerror() {
+          $scope.error = true;
+          $scope.formClass = 'initially-hidden';
+          $scope.waitingClass = 'initially-hidden';
+          $scope.$apply();
+        }
+        
         function onclose() {
-          if (retries < 30) {
+          if (!$scope.error && retries < 30) {
             openSocket();
             retries++;
           }
@@ -76,6 +84,7 @@ angular.module('roles', [])
           socket.onopen = onopen;
           socket.onclose = onclose;
           socket.onmessage = onmessage;
+          socket.onerror = onerror;
         }
         
         openSocket();
