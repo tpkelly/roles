@@ -20,7 +20,6 @@ angular.module('roles', [])
         }
     
         var socket;
-        var retries = 0;
         var socketHost = 'ws://roles-host.herokuapp.com';
         
         function alivePing() {
