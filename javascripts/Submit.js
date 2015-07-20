@@ -8,6 +8,7 @@ angular.module('roles', [])
         $scope.error = false;
     
         var interval;
+        var keepAlive;
         var countdown = function() {
             if ($scope.countdown <= -5) {
               clearInterval(interval);
@@ -22,14 +23,23 @@ angular.module('roles', [])
         var retries = 0;
         var socketHost = 'ws://roles-host.herokuapp.com';
         
+        function alivePing() {
+          var alive = { type: 'alive', name: $scope.badgename };
+          socket.send(JSON.stringify(alive));
+        }
+        
         function onopen() {
           if ($scope.badgename && $scope.badgename.length) {
             var message = { type: 'join', name: $scope.badgename, signal: $scope.moderatorCalled };
             socket.send(JSON.stringify(message));
           }
+          
+          keepAlive = setInterval(alivePing, 10000);
         }
         
         function onerror() {
+          clearInterval(keepAlive);
+          
           $scope.error = true;
           $scope.formClass = 'initially-hidden';
           $scope.waitingClass = 'initially-hidden';
@@ -37,10 +47,7 @@ angular.module('roles', [])
         }
         
         function onclose() {
-          if (!$scope.error && retries < 30) {
-            openSocket();
-            retries++;
-          }
+          onerror();
         }
         
         function onmessage (message) {
